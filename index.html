@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software Developer Portfolio</title>
+    <title>Divyansh Yadav - Software Developer</title>
     <style>
         * {
             margin: 0;
@@ -15,7 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #e0e0e0;
-            background: #121212;
+            background: #0a0a0a;
             min-height: 100vh;
         }
 
@@ -30,12 +30,12 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(18, 18, 18, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
             z-index: 1000;
             padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid #333;
+            box-shadow: 0 2px 30px rgba(138, 99, 242, 0.1);
+            border-bottom: 1px solid #1a1a1a;
         }
 
         nav {
@@ -47,7 +47,10 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #8a63f2;
+            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -60,11 +63,27 @@
             text-decoration: none;
             color: #e0e0e0;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: #8a63f2;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
@@ -77,7 +96,10 @@
             color: white;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #4a3a8a 0%, #2a1b4d 100%);
+            background: radial-gradient(circle at 20% 80%, #1a0b3d 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, #3d1a5b 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, #0f0f23 0%, transparent 50%),
+                        #0a0a0a;
         }
 
         .hero-content {
@@ -88,84 +110,93 @@
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 0 30px rgba(138, 99, 242, 0.5);
             font-weight: 700;
-            color: #ffffff;
+            background: linear-gradient(45deg, #ffffff, #8a63f2, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            color: #d0d0d0;
+            color: #b0b0b0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .cta-button {
             display: inline-block;
             padding: 12px 30px;
-            background: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(45deg, #8a63f2, #6a3db8);
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
             font-weight: 600;
+            box-shadow: 0 4px 15px rgba(138, 99, 242, 0.3);
         }
 
         .cta-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(138, 99, 242, 0.4);
         }
 
-        /* Floating shapes */
-        .floating-shapes {
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #8a63f2;
+            color: #8a63f2;
+        }
+
+        .cta-button.secondary:hover {
+            background: #8a63f2;
+            color: white;
+        }
+
+        /* Floating particles */
+        .particles {
             position: absolute;
             width: 100%;
             height: 100%;
             overflow: hidden;
         }
 
-        .shape {
+        .particle {
             position: absolute;
-            opacity: 0.15;
+            width: 4px;
+            height: 4px;
+            background: #8a63f2;
+            border-radius: 50%;
+            opacity: 0.6;
             animation: float 6s ease-in-out infinite;
-        }
-
-        .shape:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .shape:nth-child(2) {
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        .shape:nth-child(3) {
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
         }
 
         /* Sections */
         section {
             padding: 80px 0;
-            background: #1e1e1e;
+            background: #0a0a0a;
+            position: relative;
         }
 
         section:nth-child(even) {
-            background: #252525;
+            background: #111111;
         }
 
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: #ffffff;
+            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             position: relative;
         }
 
@@ -177,7 +208,8 @@
             transform: translateX(-50%);
             width: 50px;
             height: 3px;
-            background: linear-gradient(45deg, #8a63f2, #6a3db8);
+            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
+            border-radius: 2px;
         }
 
         /* About Section */
@@ -188,41 +220,80 @@
             align-items: center;
         }
 
+        .profile-section {
+            text-align: center;
+        }
+
         .profile-image {
             width: 250px;
             height: 250px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #8a63f2, #6a3db8);
+            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
+            padding: 4px;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 20px 40px rgba(138, 99, 242, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(138, 99, 242, 0.4);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #1a1a1a;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-size: 4rem;
-            margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            color: #8a63f2;
+        }
+
+        .profile-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .profile-link {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .github-link {
+            background: linear-gradient(45deg, #8a63f2, #6a3db8);
+            color: white;
+        }
+
+        .resume-link {
+            background: transparent;
+            border: 2px solid #ff6b9d;
+            color: #ff6b9d;
+        }
+
+        .profile-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 99, 242, 0.3);
+        }
+
+        .resume-link:hover {
+            background: #ff6b9d;
+            color: white;
         }
 
         .about-text {
             font-size: 1.1rem;
             line-height: 1.8;
             color: #d0d0d0;
-        }
-
-        .github-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 10px 20px;
-            background: #333;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: transform 0.3s ease, background 0.3s ease;
-            background: #8a63f2;
-        }
-
-        .github-link:hover {
-            transform: translateY(-2px);
-            background: #6a3db8;
         }
 
         /* Project Cards */
@@ -234,19 +305,19 @@
         }
 
         .project-card {
-            background: #252525;
-            border-radius: 15px;
+            background: linear-gradient(145deg, #111111, #1a1a1a);
+            border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            border: 1px solid #333;
+            border: 1px solid #2a2a2a;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 25px 50px rgba(138, 99, 242, 0.2);
             border-color: #8a63f2;
         }
 
@@ -257,14 +328,14 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(45deg, #8a63f2, #6a3db8);
+            background: linear-gradient(90deg, #8a63f2, #ff6b9d, #00f5ff);
         }
 
         .project-icon {
             width: 60px;
             height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #8a63f2, #6a3db8);
+            border-radius: 15px;
+            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -295,10 +366,11 @@
 
         .tech-tag {
             padding: 4px 12px;
-            background: #333;
+            background: #2a2a2a;
             border-radius: 20px;
             font-size: 0.85rem;
-            color: #d0d0d0;
+            color: #8a63f2;
+            border: 1px solid #3a3a3a;
         }
 
         .project-links {
@@ -322,6 +394,7 @@
         .project-link.secondary {
             border: 2px solid #8a63f2;
             color: #8a63f2;
+            background: transparent;
         }
 
         .project-link:hover {
@@ -339,17 +412,23 @@
         .skill-category {
             text-align: center;
             padding: 2rem;
-            background: #252525;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid #333;
+            background: linear-gradient(145deg, #111111, #1a1a1a);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(138, 99, 242, 0.1);
         }
 
         .skill-icon {
             width: 80px;
             height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #8a63f2, #6a3db8);
+            border-radius: 20px;
+            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -372,11 +451,9 @@
 
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, #4a3a8a 0%, #2a1b4d 100%);
-            color: white;
-        }
-
-        .contact .section-title {
+            background: radial-gradient(circle at 20% 80%, #1a0b3d 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, #3d1a5b 0%, transparent 50%),
+                        #0a0a0a;
             color: white;
         }
 
@@ -400,23 +477,36 @@
             gap: 0.5rem;
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            transition: background 0.3s ease;
+            padding: 12px 24px;
+            border-radius: 30px;
+            background: rgba(138, 99, 242, 0.1);
+            border: 1px solid rgba(138, 99, 242, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .contact-item:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(138, 99, 242, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 99, 242, 0.3);
         }
 
         /* Footer */
         footer {
-            background: #0a0a0a;
-            color: #b0b0b0;
+            background: #000000;
+            color: #707070;
             text-align: center;
             padding: 2rem 0;
-            border-top: 1px solid #333;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* Project Section Headers */
+        .project-section-header {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            color: #ff6b9d;
+            font-size: 1.8rem;
+            font-weight: 600;
         }
 
         /* Animations */
@@ -451,15 +541,6 @@
             transform: translateY(0);
         }
 
-        /* Project Section Headers */
-        .project-section-header {
-            text-align: center;
-            margin: 3rem 0 2rem;
-            color: #8a63f2;
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -470,9 +551,19 @@
                 font-size: 2.5rem;
             }
 
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
             .about-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+            }
+
+            .profile-links {
+                flex-direction: column;
+                align-items: center;
             }
 
             .projects-grid {
@@ -490,7 +581,7 @@
     <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo">Portfolio</div>
+            <div class="logo">Divyansh.dev</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -503,15 +594,24 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="floating-shapes">
-            <div class="shape">🚀</div>
-            <div class="shape">💻</div>
-            <div class="shape">⚡</div>
+        <div class="particles">
+            <div class="particle" style="left:10%;animation-delay:0s;"></div>
+            <div class="particle" style="left:20%;animation-delay:1s;"></div>
+            <div class="particle" style="left:30%;animation-delay:2s;"></div>
+            <div class="particle" style="left:40%;animation-delay:3s;"></div>
+            <div class="particle" style="left:50%;animation-delay:4s;"></div>
+            <div class="particle" style="left:60%;animation-delay:1.5s;"></div>
+            <div class="particle" style="left:70%;animation-delay:2.5s;"></div>
+            <div class="particle" style="left:80%;animation-delay:3.5s;"></div>
+            <div class="particle" style="left:90%;animation-delay:0.5s;"></div>
         </div>
         <div class="hero-content">
-            <h1>Divyansh yadav</h1>
-            <p>Passionate about creating innovative solutions through code</p>
-            <a href="#projects" class="cta-button">View My Work</a>
+            <h1>Divyansh Yadav</h1>
+            <p>Passionate Software Developer | AI Enthusiast | Full-Stack Creator</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="cta-button">View My Work</a>
+                <a href="https://drive.google.com/file/d/1WFx5qctCGAmSOsWIjAwblrtPpPjX8Yse/view?usp=drive_link" class="cta-button secondary" target="_blank">Download Resume</a>
+            </div>
         </div>
     </section>
 
@@ -520,11 +620,20 @@
         <div class="container">
             <h2 class="section-title fade-in">About Me</h2>
             <div class="about-content fade-in">
-                <div class="profile-image">👨‍💻</div>
+                <div class="profile-section">
+                    <div class="profile-image">
+                       
+                        <img src="https://media.licdn.com/dms/image/v2/D5603AQGM0ffBprsghg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1706292243385?e=1755129600&v=beta&t=juTtfrQ7L1voF9k6LzyH_NlVhaRQ2pUz50TMNRSD7nY" alt="Divyansh Yadav" class="profile-img"> 
+                    </div>
+                    <div class="profile-links">
+                        <a href="https://github.com/Divodude" class="profile-link github-link" target="_blank">🔗 GitHub</a>
+                        <a href="https://drive.google.com/file/d/1WFx5qctCGAmSOsWIjAwblrtPpPjX8Yse/view?usp=drive_link" class="profile-link resume-link" target="_blank">📄 Resume</a>
+                    </div>
+                </div>
                 <div class="about-text">
                     <p>I'm a passionate software developer student with a keen interest in web development, machine learning, and mobile applications. I love exploring new technologies and building projects that solve real-world problems.</p>
-                    <p>My journey in software development has led me to work on various projects spanning different domains, from web applications to AI-powered solutions and mobile apps with IoT integration.</p>
-                    <a href="https://github.com/Divodude" class="github-link" target="_blank">🔗 GitHub Profile</a>
+                    <p>My journey in software development has led me to work on various projects spanning different domains, from web applications to AI-powered solutions and mobile apps with IoT integration. I'm constantly learning and adapting to new technologies in this ever-evolving field.</p>
+                    <p>When I'm not coding, you'll find me exploring the latest tech trends, contributing to open-source projects, or working on innovative solutions that can make a difference.</p>
                 </div>
             </div>
         </div>
@@ -549,7 +658,7 @@
                         <span class="tech-tag">Responsive Design</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link primary">View Demo</a>
+                        <a href="https://deployable-project.onrender.com/" class="project-link primary">View Demo</a>
                         <a href="https://github.com/Divodude/Deployable_project.git" class="project-link secondary">GitHub</a>
                     </div>
                 </div>
@@ -570,7 +679,7 @@
                         <span class="tech-tag">Transformers</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link primary">View Demo</a>
+                        
                         <a href="https://github.com/Divodude/medai.git" class="project-link secondary">GitHub</a>
                     </div>
                 </div>
@@ -581,18 +690,18 @@
             <div class="projects-grid fade-in">
                 <div class="project-card">
                     <div class="project-icon">📱</div>
-                    <h3 class="project-title">Smart Secure CCTV App</h3>
-                    <p class="project-description">A real-time security monitoring application that streams video from ESP32 cameras with intelligent motion detection and alert systems.</p>
+                    <h3 class="project-title">Wave</h3>
+                    <p class="project-description">A Music App made with flutter and Django and Django Rest for Backend the app provides music streaming with realtime music sync with you friends from websockets</p>
                     <div class="tech-tags">
-                        <span class="tech-tag">React Native</span>
-                        <span class="tech-tag">ESP32</span>
-                        <span class="tech-tag">IoT</span>
-                        <span class="tech-tag">WebRTC</span>
-                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Dart</span>
+                        <span class="tech-tag">websockets</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">DRF</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link primary">View Demo</a>
-                        <a href="#" class="project-link secondary">GitHub</a>
+                        
+                        <a href="https://github.com/Divodude/Wave.git" class="project-link secondary">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -612,7 +721,7 @@
                         <span class="tech-tag">REST API</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link primary">API Docs</a>
+                        
                         <a href="https://github.com/Divodude/AI_LIB.git" class="project-link secondary">GitHub</a>
                     </div>
                 </div>
@@ -638,12 +747,12 @@
                 <div class="skill-category">
                     <div class="skill-icon">📱</div>
                     <h3 class="skill-name">Mobile Development</h3>
-                    <div class="skill-list">React Native, Flutter, iOS, Android, ESP32, IoT</div>
+                    <div class="skill-list">Flutter,Dart,Pyflet, iOS, Android,IoT</div>
                 </div>
                 <div class="skill-category">
                     <div class="skill-icon">⚙️</div>
                     <h3 class="skill-name">Backend & APIs</h3>
-                    <div class="skill-list">FastAPI, REST APIs, Database Design, Cloud Services</div>
+                    <div class="skill-list">FastAPI, REST APIs, Database Design, Cloud Services,Deployments,CIDC</div>
                 </div>
             </div>
         </div>
@@ -654,7 +763,7 @@
         <div class="container">
             <h2 class="section-title fade-in">Get In Touch</h2>
             <div class="contact-content fade-in">
-                <p>I'm always excited to work on new projects and collaborate with fellow developers. Let's connect!</p>
+                <p>I'm always excited to work on new projects and collaborate with fellow developers. Let's connect and create something amazing together!</p>
                 <div class="contact-info">
                     <a href="mailto:your.email@example.com" class="contact-item">
                         📧 Email Me
@@ -662,7 +771,7 @@
                     <a href="https://github.com/Divodude" class="contact-item" target="_blank">
                         🔗 GitHub
                     </a>
-                    <a href="https://linkedin.com/in/yourprofile" class="contact-item" target="_blank">
+                    <a href="https://www.linkedin.com/in/divyansh-yadav-15618626b/?trk=opento_sprofile_pfeditor" class="contact-item" target="_blank">
                         💼 LinkedIn
                     </a>
                 </div>
@@ -673,7 +782,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Software Developer Portfolio. Built with passion and code.</p>
+            <p>&copy; 2024 Divyansh Yadav. Crafted with passion and precision.</p>
         </div>
     </footer>
 
@@ -715,53 +824,30 @@
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
-                header.style.background = 'rgba(18, 18, 18, 0.98)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.4)';
+                header.style.background = 'rgba(10, 10, 10, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(138, 99, 242, 0.2)';
             } else {
-                header.style.background = 'rgba(18, 18, 18, 0.95)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+                header.style.boxShadow = '0 2px 30px rgba(138, 99, 242, 0.1)';
             }
         });
 
-        // Add hover effects to project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
+        // Floating particles animation
+        function animateParticles() {
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach((particle, index) => {
+                const randomX = Math.random() * 100;
+                const randomY = Math.random() * 100;
+                const randomDelay = Math.random() * 5;
+                
+                particle.style.left = randomX + '%';
+                particle.style.top = randomY + '%';
+                particle.style.animationDelay = randomDelay + 's';
             });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Floating shapes animation
-        function createFloatingShape() {
-            const shapes = ['🚀', '💻', '⚡', '🌟', '🔥', '💡'];
-            const shape = document.createElement('div');
-            shape.textContent = shapes[Math.floor(Math.random() * shapes.length)];
-            shape.style.position = 'fixed';
-            shape.style.fontSize = '2rem';
-            shape.style.opacity = '0.15';
-            shape.style.pointerEvents = 'none';
-            shape.style.zIndex = '1';
-            shape.style.left = Math.random() * window.innerWidth + 'px';
-            shape.style.top = window.innerHeight + 'px';
-            
-            document.body.appendChild(shape);
-            
-            const animation = shape.animate([
-                { transform: 'translateY(0px) rotate(0deg)', opacity: 0.15 },
-                { transform: `translateY(-${window.innerHeight + 100}px) rotate(360deg)`, opacity: 0 }
-            ], {
-                duration: 8000,
-                easing: 'linear'
-            });
-            
-            animation.onfinish = () => shape.remove();
         }
 
-        // Create floating shapes periodically
-        setInterval(createFloatingShape, 3000);
+        // Initialize particles
+        animateParticles();
 
         // Dynamic typing effect for hero section
         function typeWriter(element, text, speed = 100) {
@@ -782,7 +868,35 @@
         window.addEventListener('load', function() {
             const heroTitle = document.querySelector('.hero h1');
             const originalText = heroTitle.textContent;
-            typeWriter(heroTitle, originalText, 100);
+            setTimeout(() => {
+                typeWriter(heroTitle, originalText, 100);
+            }, 500);
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Smooth reveal animation on scroll
+        const revealElements = document.querySelectorAll('.fade-in');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
         });
     </script>
 </body>
