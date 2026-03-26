@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divyansh Yadav - Software Developer</title>
     <style>
+        /* CSS Variables for Solid Color Palette */
+        :root {
+            --bg-main: #0f172a;        /* Slate 900 */
+            --bg-secondary: #1e293b;   /* Slate 800 */
+            --bg-card: #334155;        /* Slate 700 */
+            --accent-primary: #3b82f6; /* Blue 500 */
+            --accent-hover: #2563eb;   /* Blue 600 */
+            --text-primary: #f8fafc;   /* Slate 50 */
+            --text-secondary: #94a3b8; /* Slate 400 */
+            --border-color: #334155;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,17 +24,18 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-            color: #e0e0e0;
-            background: #0a0a0a;
+            color: var(--text-primary);
+            background-color: var(--bg-main);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         /* Header Styles */
@@ -30,12 +43,16 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(15px);
+            background-color: var(--bg-main);
             z-index: 1000;
             padding: 1rem 0;
-            box-shadow: 0 2px 30px rgba(138, 99, 242, 0.1);
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
         }
 
         nav {
@@ -46,11 +63,13 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-primary);
         }
 
         .nav-links {
@@ -61,300 +80,267 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #e0e0e0;
+            color: var(--text-secondary);
             font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
+            transition: color 0.2s ease;
         }
 
         .nav-links a:hover {
-            color: #8a63f2;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            color: var(--accent-primary);
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            background: radial-gradient(circle at 20% 80%, #1a0b3d 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, #3d1a5b 0%, transparent 50%),
-                        radial-gradient(circle at 40% 40%, #0f0f23 0%, transparent 50%),
-                        #0a0a0a;
+            padding-top: 80px;
+            background-color: var(--bg-main);
         }
 
         .hero-content {
-            z-index: 2;
-            animation: fadeInUp 1s ease-out;
+            max-width: 800px;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 30px rgba(138, 99, 242, 0.5);
-            font-weight: 700;
-            background: linear-gradient(45deg, #ffffff, #8a63f2, #ff6b9d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--accent-primary);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            color: #b0b0b0;
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+            max-width: 600px;
         }
 
         .hero-buttons {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
         }
 
-        .cta-button {
+        .btn {
             display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(45deg, #8a63f2, #6a3db8);
-            color: white;
+            padding: 12px 28px;
             text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
+            border-radius: 6px;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(138, 99, 242, 0.3);
+            transition: all 0.2s ease;
+            text-align: center;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(138, 99, 242, 0.4);
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: #ffffff;
+            border: 2px solid var(--accent-primary);
         }
 
-        .cta-button.secondary {
-            background: transparent;
-            border: 2px solid #8a63f2;
-            color: #8a63f2;
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
         }
 
-        .cta-button.secondary:hover {
-            background: #8a63f2;
-            color: white;
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
         }
 
-        /* Floating particles */
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        .btn-secondary:hover {
+            border-color: var(--text-primary);
+            background-color: var(--bg-secondary);
         }
 
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #8a63f2;
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Sections */
+        /* Generic Section Styles */
         section {
-            padding: 80px 0;
-            background: #0a0a0a;
-            position: relative;
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         section:nth-child(even) {
-            background: #111111;
+            background-color: var(--bg-secondary);
         }
 
         .section-title {
-            text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
+            color: var(--text-primary);
+            font-weight: 700;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
-            border-radius: 2px;
+        .section-title span {
+            color: var(--accent-primary);
         }
 
         /* About Section */
-        .about-content {
+        .about-grid {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: start;
         }
 
-        .profile-section {
-            text-align: center;
+        .profile-img-container {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
         }
 
-        .profile-image {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
-            padding: 4px;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 20px 40px rgba(138, 99, 242, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 25px 50px rgba(138, 99, 242, 0.4);
-        }
-
-        .profile-img {
+        .profile-img-container img {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
             object-fit: cover;
-            background: #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: #8a63f2;
         }
 
-        .profile-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .profile-link {
-            display: inline-block;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .github-link {
-            background: linear-gradient(45deg, #8a63f2, #6a3db8);
-            color: white;
-        }
-
-        .resume-link {
-            background: transparent;
-            border: 2px solid #ff6b9d;
-            color: #ff6b9d;
-        }
-
-        .profile-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(138, 99, 242, 0.3);
-        }
-
-        .resume-link:hover {
-            background: #ff6b9d;
-            color: white;
-        }
-
-        .about-text {
+        .about-text p {
             font-size: 1.1rem;
-            line-height: 1.8;
-            color: #d0d0d0;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
         }
 
-        /* Project Cards */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+        .education-card {
+            background-color: var(--bg-main);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
             margin-top: 2rem;
         }
 
-        .project-card {
-            background: linear-gradient(145deg, #111111, #1a1a1a);
-            border-radius: 20px;
+        .education-card h4 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-card p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        /* Experience Section */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .timeline-item {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
             padding: 2rem;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            border-radius: 8px;
+            transition: border-color 0.2s ease;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--accent-primary);
+        }
+
+        /* Highlighted Timeline Item Styles */
+        .timeline-item.highlighted {
+            border-color: var(--accent-primary);
+            background-color: rgba(59, 130, 246, 0.05);
             position: relative;
-            overflow: hidden;
-            border: 1px solid #2a2a2a;
+        }
+
+        .timeline-item.highlighted::before {
+            content: '⭐ Featured';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background-color: var(--accent-primary);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .timeline-action {
+            margin-top: 1.2rem;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-title h3 {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-title h4 {
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+            font-weight: 500;
+        }
+
+        .timeline-date {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            background-color: var(--bg-card);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        .timeline-item ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(138, 99, 242, 0.2);
-            border-color: #8a63f2;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #8a63f2, #ff6b9d, #00f5ff);
-        }
-
-        .project-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 15px;
-            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
         }
 
         .project-title {
-            font-size: 1.3rem;
-            font-weight: bold;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #ffffff;
+            color: var(--text-primary);
         }
 
         .project-description {
-            color: #b0b0b0;
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
-            line-height: 1.6;
+            flex-grow: 1;
         }
 
         .tech-tags {
@@ -365,12 +351,13 @@
         }
 
         .tech-tag {
-            padding: 4px 12px;
-            background: #2a2a2a;
-            border-radius: 20px;
+            background-color: var(--bg-main);
+            color: var(--accent-primary);
+            padding: 4px 10px;
+            border-radius: 4px;
             font-size: 0.85rem;
-            color: #8a63f2;
-            border: 1px solid #3a3a3a;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
         }
 
         .project-links {
@@ -378,167 +365,93 @@
             gap: 1rem;
         }
 
-        .project-link {
-            padding: 8px 16px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .project-link.primary {
-            background: linear-gradient(45deg, #8a63f2, #6a3db8);
-            color: white;
-        }
-
-        .project-link.secondary {
-            border: 2px solid #8a63f2;
-            color: #8a63f2;
-            background: transparent;
-        }
-
-        .project-link:hover {
-            transform: translateY(-2px);
-        }
-
         /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .skill-category {
-            text-align: center;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
             padding: 2rem;
-            background: linear-gradient(145deg, #111111, #1a1a1a);
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            border: 1px solid #2a2a2a;
-            transition: all 0.3s ease;
+            border-radius: 8px;
         }
 
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(138, 99, 242, 0.1);
-        }
-
-        .skill-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
-            background: linear-gradient(45deg, #8a63f2, #ff6b9d);
+        .skill-category h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            margin: 0 auto 1rem;
+            gap: 0.5rem;
         }
-
-        .skill-name {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #ffffff;
+        
+        .skill-category h3::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-primary);
+            border-radius: 2px;
         }
 
         .skill-list {
-            color: #b0b0b0;
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
         }
 
         /* Contact Section */
-        .contact {
-            background: radial-gradient(circle at 20% 80%, #1a0b3d 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, #3d1a5b 0%, transparent 50%),
-                        #0a0a0a;
-            color: white;
-        }
-
-        .contact-content {
+        .contact-wrapper {
             text-align: center;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .contact-info {
+        .contact-wrapper p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
             flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 30px;
-            background: rgba(138, 99, 242, 0.1);
-            border: 1px solid rgba(138, 99, 242, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-item:hover {
-            background: rgba(138, 99, 242, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(138, 99, 242, 0.3);
+            gap: 1rem;
         }
 
         /* Footer */
         footer {
-            background: #000000;
-            color: #707070;
-            text-align: center;
+            background-color: var(--bg-main);
             padding: 2rem 0;
-            border-top: 1px solid #1a1a1a;
-        }
-
-        /* Project Section Headers */
-        .project-section-header {
             text-align: center;
-            margin: 3rem 0 2rem;
-            color: #ff6b9d;
-            font-size: 1.8rem;
-            font-weight: 600;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
         }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive Design */
@@ -551,40 +464,25 @@
                 font-size: 2.5rem;
             }
 
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .profile-links {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .projects-grid {
+            .about-grid {
                 grid-template-columns: 1fr;
             }
 
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
+            .profile-img-container {
+                max-width: 300px;
+                margin: 0 auto;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <nav class="container">
-            <div class="logo">Divyansh.dev</div>
+            <a href="#home" class="logo">Divyansh<span>.dev</span></a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -594,23 +492,14 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="particles">
-            <div class="particle" style="left:10%;animation-delay:0s;"></div>
-            <div class="particle" style="left:20%;animation-delay:1s;"></div>
-            <div class="particle" style="left:30%;animation-delay:2s;"></div>
-            <div class="particle" style="left:40%;animation-delay:3s;"></div>
-            <div class="particle" style="left:50%;animation-delay:4s;"></div>
-            <div class="particle" style="left:60%;animation-delay:1.5s;"></div>
-            <div class="particle" style="left:70%;animation-delay:2.5s;"></div>
-            <div class="particle" style="left:80%;animation-delay:3.5s;"></div>
-            <div class="particle" style="left:90%;animation-delay:0.5s;"></div>
-        </div>
-        <div class="hero-content">
-            <h1>Divyansh Yadav</h1>
-            <p>Passionate Software Developer | AI Enthusiast | Full-Stack Creator</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="cta-button">View My Work</a>
-                <a href="https://drive.google.com/file/d/1WFx5qctCGAmSOsWIjAwblrtPpPjX8Yse/view?usp=drive_link" class="cta-button secondary" target="_blank">Download Resume</a>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm Divyansh Yadav<br><span>Software Developer.</span></h1>
+                <p>B.Tech IT Undergrad @ IIIT Una. Specializing in Backend Systems, Generative AI, and Full-Stack App Development.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="mailto:ry604492@gmail.com" class="btn btn-secondary">Contact Me</a>
+                </div>
             </div>
         </div>
     </section>
@@ -618,23 +507,95 @@
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title fade-in">About Me</h2>
-            <div class="about-content fade-in">
-                <div class="profile-section">
-                    <div class="profile-image">
-                       
-                        <img src="https://media.licdn.com/dms/image/v2/D5603AQGM0ffBprsghg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1706292243385?e=1755129600&v=beta&t=juTtfrQ7L1voF9k6LzyH_NlVhaRQ2pUz50TMNRSD7nY" alt="Divyansh Yadav" class="profile-img"> 
-                    </div>
-                    <div class="profile-links">
-                        <a href="https://github.com/Divodude" class="profile-link github-link" target="_blank">🔗 GitHub</a>
-                        <a href="https://drive.google.com/file/d/1WFx5qctCGAmSOsWIjAwblrtPpPjX8Yse/view?usp=drive_link" class="profile-link resume-link" target="_blank">📄 Resume</a>
-                    </div>
+            <h2 class="section-title fade-in">About <span>Me</span></h2>
+            <div class="about-grid fade-in">
+                <div class="profile-img-container">
+                    <img src="https://media.licdn.com/dms/image/v2/D5635AQEB0sZkjCodiA/profile-framedphoto-shrink_400_400/B56ZTZLMFDHsAc-/0/1738810376853?e=1775106000&v=beta&t=nRVoyjIqCT1ruNuL4AGd1ZTHb41o6YaidkHRvjpoCR0" alt="Divyansh Yadav"> 
                 </div>
                 <div class="about-text">
-                    <p>I'm a passionate software developer student with a keen interest in web development, machine learning, and mobile applications. I love exploring new technologies and building projects that solve real-world problems.</p>
-                    <p>My journey in software development has led me to work on various projects spanning different domains, from web applications to AI-powered solutions and mobile apps with IoT integration. I'm constantly learning and adapting to new technologies in this ever-evolving field.</p>
-                    <p>When I'm not coding, you'll find me exploring the latest tech trends, contributing to open-source projects, or working on innovative solutions that can make a difference.</p>
+                    <p>I am a passionate Information Technology Engineering student currently pursuing my B.Tech at the Indian Institute of Information Technology, Una. I thrive on building robust backend architectures, integrating cutting-edge Generative AI features, and deploying seamless full-stack applications.</p>
+                    <p>My technical journey includes working with startups and leading technical societies, pushing the boundaries of what I can build—from LLM-powered RAG pipelines to scalable medical e-commerce platforms.</p>
+                    
+                    <div class="education-card">
+                        <h4>B.Tech in Information Technology</h4>
+                        <p style="color: var(--text-secondary);">Indian Institute of Information Technology, Una &bull; 2023 - Present</p>
+                       
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Leadership Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title fade-in">Experience & <span>Leadership</span></h2>
+            <div class="timeline fade-in">
+                
+                <!-- Experience 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>App Developer Intern</h3>
+                            <h4>ReduxCo Pvt Ltd</h4>
+                        </div>
+                        <span class="timeline-date">Jan 2025 – Present</span>
+                    </div>
+                    <ul>
+                        <li>Shipped production features for ArogyaRx (medical e-commerce Flutter app) including product catalog, cart, and user-profile modules.</li>
+                        <li>Integrated RESTful APIs with dynamic state management, optimizing API call patterns for improved load performance.</li>
+                    </ul>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Backend Development Intern</h3>
+                            <h4>Slotin Solution</h4>
+                        </div>
+                        <span class="timeline-date">Jan 2025 – Present</span>
+                    </div>
+                    <ul>
+                        <li>Designed and deployed scalable RESTful APIs supporting high-traffic workloads and LLM-powered frontend features.</li>
+                        <li>Shipped 5+ production endpoints with optimized database queries, integrated into real-time data pipelines.</li>
+                    </ul>
+                </div>
+
+                <!-- Leadership 1 -->
+                <div class="timeline-item highlighted">
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Chief Technology Officer (CTO)</h3>
+                            <h4>Startup RPAR</h4>
+                        </div>
+                        <span class="timeline-date">2025 – Present</span>
+                    </div>
+                    <ul>
+                        <li>Leading the technical strategy and architecture development for the startup's core product offerings.</li>
+                    </ul>
+                    <div class="timeline-action">
+                        <a href="https://www.linkedin.com/company/109599035/" target="_blank" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px;">
+                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            Startup LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Leadership 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-title">
+                            <h3>Technical Head</h3>
+                            <h4>Aavesh Technical Society, IIIT Una</h4>
+                        </div>
+                        <span class="timeline-date">Dec 2024 – Dec 2025</span>
+                    </div>
+                    <ul>
+                        <li>Guiding the technical direction of the society and organizing technical workshops and initiatives for the university.</li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </section>
@@ -642,100 +603,72 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title fade-in">My Projects</h2>
-            
-            <!-- Web Development Projects -->
-            <h3 class="project-section-header fade-in">Web Development</h3>
+            <h2 class="section-title fade-in">Featured <span>Projects</span></h2>
             <div class="projects-grid fade-in">
+                
+                <!-- Project 1 -->
                 <div class="project-card">
-                    <div class="project-icon">🖼️</div>
-                    <h3 class="project-title">My Gallery</h3>
-                    <p class="project-description">A responsive web gallery application for showcasing and managing photo collections with advanced filtering and search capabilities.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Responsive Design</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://deployable-project.onrender.com/" class="project-link primary">View Demo</a>
-                        <a href="https://github.com/Divodude/Deployable_project.git" class="project-link secondary">GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Machine Learning Projects -->
-            <h3 class="project-section-header fade-in">Deep Learning & AI</h3>
-            <div class="projects-grid fade-in">
-                <div class="project-card">
-                    <div class="project-icon">🤖</div>
-                    <h3 class="project-title">AI Doc using BERT</h3>
-                    <p class="project-description">An intelligent document analysis system powered by BERT transformer model for natural language understanding and document classification.</p>
+                    <h3 class="project-title">MedAI</h3>
+                    <p class="project-description">An AI-powered medical report analysis and health assistant. Ingests PDFs/images via OCR and uses LLM-powered RAG pipelines to generate personalized health insights, diets, and remedies.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">BERT</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">NLP</span>
-                        <span class="tech-tag">Transformers</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">LLMs & RAG</span>
+                        <span class="tech-tag">OCR</span>
                     </div>
                     <div class="project-links">
-                        
-                        
-                        <a href="https://github.com/Divodude/medai.git" class="project-link secondary">GitHub</a>
-                      
-                        
+                        <a href="https://medai-5o4l.vercel.app/" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">Live Demo</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- App Development Projects -->
-            <h3 class="project-section-header fade-in">App Development</h3>
-            <div class="projects-grid fade-in">
+                <!-- Project 2 -->
                 <div class="project-card">
-                    <div class="project-icon">📱</div>
-                    <h3 class="project-title">Wave</h3>
-                    <p class="project-description">A Music App made with flutter and Django and Django Rest for Backend the app provides music streaming with realtime music sync with you friends from websockets</p>
-                    <div class="tech-tags">
-    <span class="tech-tag">Flutter</span>
-    <span class="tech-tag">Dart</span>
-    <span class="tech-tag">websockets</span>
-    <span class="tech-tag">Python</span>
-    <span class="tech-tag">DRF</span>
-    <span class="tech-tag">Docker</span>
-    <span class="tech-tag">Google Cloud</span>
-    <span class="tech-tag">Firebase</span>
-    <span class="tech-tag">Supabase</span>
-    <span class="tech-tag">Redis</span>
-    <span class="tech-tag">just_audio</span>
-</div>
-                    <div class="project-links">
-                        
-                        <a href="https://github.com/Divodude/Wave.git" class="project-link secondary">GitHub</a>
-                        <a href="https://wave-web-divodudes-projects.vercel.app/" class="project-link secondary">Demo</a>
-                          <a href="https://drive.google.com/file/d/1geUxrIk8HPvo0OO_FT8yhJMIXbaE2z4q/view?usp=sharing" class="project-link secondary">Apk</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- API Development Projects -->
-            <h3 class="project-section-header fade-in">API Development</h3>
-            <div class="projects-grid fade-in">
-                <div class="project-card">
-                    <div class="project-icon">🔧</div>
-                    <h3 class="project-title">OCR API</h3>
-                    <p class="project-description">A robust Optical Character Recognition API that extracts text from images with high accuracy, supporting multiple languages and formats.</p>
+                    <h3 class="project-title">ai-logmaster</h3>
+                    <p class="project-description">A production-grade agentic AI CLI tool on PyPI that uses LangGraph multi-step reasoning to autonomously diagnose software errors from logs, saving LLM API tokens via intelligent caching.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">Tesseract</span>
-                        <span class="tech-tag">OpenCV</span>
-                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">LLMs</span>
                     </div>
                     <div class="project-links">
-                        
-                        <a href="https://github.com/Divodude/AI_LIB.git" class="project-link secondary">GitHub</a>
+                        <a href="https://pypi.org/project/ai-logmaster/" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">View on PyPI</a>
                     </div>
                 </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <h3 class="project-title">Wave Music App</h3>
+                    <p class="project-description">A robust music application featuring real-time music sync with friends via WebSockets, built with a Flutter frontend and a Django Rest Framework backend.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Django (DRF)</span>
+                        <span class="tech-tag">WebSockets</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Divodude/Wave.git" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">GitHub</a>
+                        <a href="https://wave-web-divodudes-projects.vercel.app/" target="_blank" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">Live Demo</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <h3 class="project-title">Microfw</h3>
+                    <p class="project-description">A lightweight, high-performance asynchronous Python micro-framework for building modern microservices. Features an async-first ASGI architecture, native SQLAlchemy ORM support, and automatic Pydantic data validation.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">ASGI</span>
+                        <span class="tech-tag">SQLAlchemy</span>
+                        <span class="tech-tag">Pydantic</span>
+                        <span class="tech-tag">Microservices</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://pypi.org/project/microfw/" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">View on PyPI</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -743,48 +676,53 @@
     <!-- Skills Section -->
     <section id="skills">
         <div class="container">
-            <h2 class="section-title fade-in">Skills & Technologias!</h2>
+            <h2 class="section-title fade-in">Technical <span>Skills</span></h2>
             <div class="skills-grid fade-in">
+                
                 <div class="skill-category">
-                    <div class="skill-icon">🌐</div>
-                    <h3 class="skill-name">Web Development</h3>
-                    <div class="skill-list">HTML,CSS,JS</div>
+                    <h3>AI & Generative AI</h3>
+                    <div class="skill-list">
+                        Large Language Models (LLMs), Prompt Engineering, RAG, Agentic AI, LangChain, LangGraph, Ollama, OpenAI API, Embeddings, Vector Search
+                    </div>
                 </div>
+
                 <div class="skill-category">
-                    <div class="skill-icon">🧠</div>
-                    <h3 class="skill-name">AI & ML</h3>
-                    <div class="skill-list">Python, TensorFlow, PyTorch, BERT, NLP, Computer Vision</div>
+                    <h3>Programming</h3>
+                    <div class="skill-list">
+                        Python, C/C++, SQL, JavaScript, Dart, HTML, CSS
+                    </div>
                 </div>
+
                 <div class="skill-category">
-                    <div class="skill-icon">📱</div>
-                    <h3 class="skill-name">Mobile Development</h3>
-                    <div class="skill-list">Flutter,Dart,Pyflet, iOS, Android,IoT</div>
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skill-list">
+                        Django, Flask, FastAPI, Flutter, LangChain, LangGraph, OpenCV, React, REST APIs
+                    </div>
                 </div>
+
                 <div class="skill-category">
-                    <div class="skill-icon">⚙️</div>
-                    <h3 class="skill-name">Backend & APIs</h3>
-                    <div class="skill-list">FastAPI, REST APIs, Database Design, Cloud Services,Deployments,CIDC,Docker,REDIS,Google Cloud Platform ,FireBase</div>
+                    <h3>Cloud & DevOps</h3>
+                    <div class="skill-list">
+                        Google Cloud Platform (GCP), Firebase, AWS S3, Docker, Git, Continuous Deployment, Redis, Linux
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact">
         <div class="container">
-            <h2 class="section-title fade-in">Get In Touch</h2>
-            <div class="contact-content fade-in">
-                <p>I'm always excited to work on new projects and collaborate with fellow developers. Let's connect and create something amazing together!</p>
-                <div class="contact-info">
-                    <a href="liveg6740@gmail.com" class="contact-item">
-                        📧 Email Me
-                    </a>
-                    <a href="https://github.com/Divodude" class="contact-item" target="_blank">
-                        🔗 GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/divyansh-yadav-15618626b/?trk=opento_sprofile_pfeditor" class="contact-item" target="_blank">
-                        💼 LinkedIn
-                    </a>
+            <h2 class="section-title fade-in" style="text-align: center;">Get In <span>Touch</span></h2>
+            <div class="contact-wrapper fade-in">
+                <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Let's connect.</p>
+                
+                <div class="contact-links">
+                    <a href="mailto:ry604492@gmail.com" class="btn btn-primary">Email Me</a>
+                    <a href="https://www.linkedin.com/in/divyansh-yadav-15618626b/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+                    <a href="https://github.com/Divodude" target="_blank" class="btn btn-secondary">GitHub</a>
+                    <a href="https://codolio.com/profile/Divodude" target="_blank" class="btn btn-secondary">Codolio</a>
                 </div>
             </div>
         </div>
@@ -793,23 +731,42 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Divyansh Yadav. Crafted with passion and precision.</p>
+            <p>&copy; 2025 Divyansh Yadav. Built with clean code and solid colors.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const targetId = this.getAttribute('href');
+                if (targetId === '#home') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = 70;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
                 }
             });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
         // Intersection Observer for fade-in animations
@@ -818,96 +775,18 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    // Optional: Stop observing once faded in
+                    // observer.unobserve(entry.target); 
                 }
             });
         }, observerOptions);
 
-        // Observe all fade-in elements
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
-        });
-
-        // Header background change on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(10, 10, 10, 0.98)';
-                header.style.boxShadow = '0 2px 30px rgba(138, 99, 242, 0.2)';
-            } else {
-                header.style.background = 'rgba(10, 10, 10, 0.95)';
-                header.style.boxShadow = '0 2px 30px rgba(138, 99, 242, 0.1)';
-            }
-        });
-
-        // Floating particles animation
-        function animateParticles() {
-            const particles = document.querySelectorAll('.particle');
-            particles.forEach((particle, index) => {
-                const randomX = Math.random() * 100;
-                const randomY = Math.random() * 100;
-                const randomDelay = Math.random() * 5;
-                
-                particle.style.left = randomX + '%';
-                particle.style.top = randomY + '%';
-                particle.style.animationDelay = randomDelay + 's';
-            });
-        }
-
-        // Initialize particles
-        animateParticles();
-
-        // Dynamic typing effect for hero section
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // Initialize typing effect when page loads
-        window.addEventListener('load', function() {
-            const heroTitle = document.querySelector('.hero h1');
-            const originalText = heroTitle.textContent;
-            setTimeout(() => {
-                typeWriter(heroTitle, originalText, 100);
-            }, 500);
-        });
-
-        // Add interactive hover effects
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Smooth reveal animation on scroll
-        const revealElements = document.querySelectorAll('.fade-in');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        revealElements.forEach(el => {
-            revealObserver.observe(el);
         });
     </script>
 </body>
