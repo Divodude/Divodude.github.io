@@ -4,27 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divyansh Yadav - Software Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables for Solid Color Palette */
         :root {
-            --bg-main: #0f172a;        /* Slate 900 */
-            --bg-secondary: #1e293b;   /* Slate 800 */
-            --bg-card: #334155;        /* Slate 700 */
-            --accent-primary: #3b82f6; /* Blue 500 */
-            --accent-hover: #2563eb;   /* Blue 600 */
-            --text-primary: #f8fafc;   /* Slate 50 */
-            --text-secondary: #94a3b8; /* Slate 400 */
-            --border-color: #334155;
+            --bg-main: #0a0e1a;
+            --bg-secondary: #111827;
+            --bg-card: #1a2236;
+            --bg-card-hover: #1e2940;
+            --accent-primary: #4f8ef7;
+            --accent-glow: rgba(79,142,247,0.15);
+            --accent-hover: #3a7af5;
+            --text-primary: #e8edf5;
+            --text-secondary: #8899b4;
+            --text-muted: #4a5568;
+            --border-color: rgba(79,142,247,0.12);
+            --border-hover: rgba(79,142,247,0.35);
+            --easy-color: #10d9a8;
+            --medium-color: #f59e0b;
+            --hard-color: #f43f5e;
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: var(--font-main);
             line-height: 1.6;
             color: var(--text-primary);
             background-color: var(--bg-main);
@@ -32,452 +39,426 @@
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* Header Styles */
+        /* Header */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: var(--bg-main);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border-color);
-            transition: background-color 0.3s ease;
-        }
-
-        header.scrolled {
-            background-color: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(8px);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--accent-primary);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            background-color: var(--bg-main);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            font-weight: 800;
-        }
-
-        .hero h1 span {
-            color: var(--accent-primary);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-primary);
-            color: #ffffff;
-            border: 2px solid var(--accent-primary);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
-            border-color: var(--accent-hover);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--text-primary);
-            background-color: var(--bg-secondary);
-        }
-
-        /* Generic Section Styles */
-        section {
-            padding: 100px 0;
+            position: fixed; top: 0; width: 100%;
+            background-color: rgba(10,14,26,0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000; padding: 1rem 0;
             border-bottom: 1px solid var(--border-color);
         }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 700; color: var(--text-primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--accent-primary); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent-primary); }
 
-        section:nth-child(even) {
-            background-color: var(--bg-secondary);
-        }
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
+        .hero-content { max-width: 800px; animation: fadeInUp 0.8s ease-out; }
+        .hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem; font-weight: 700; letter-spacing: -1px; }
+        .hero h1 span { color: var(--accent-primary); }
+        .hero p { font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--text-secondary); max-width: 580px; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--text-primary);
-            font-weight: 700;
-        }
+        .btn { display: inline-block; padding: 11px 26px; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.2s; font-size: 0.95rem; font-family: var(--font-main); }
+        .btn-primary { background: var(--accent-primary); color: #fff; border: 1.5px solid var(--accent-primary); }
+        .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); transform: translateY(-1px); }
+        .btn-secondary { background: transparent; color: var(--text-primary); border: 1.5px solid var(--border-color); }
+        .btn-secondary:hover { border-color: var(--border-hover); background: var(--accent-glow); }
 
-        .section-title span {
-            color: var(--accent-primary);
-        }
+        /* Sections */
+        section { padding: 100px 0; border-bottom: 1px solid var(--border-color); }
+        section:nth-child(even) { background-color: var(--bg-secondary); }
+        .section-title { font-size: 2.4rem; margin-bottom: 3rem; font-weight: 700; letter-spacing: -0.5px; }
+        .section-title span { color: var(--accent-primary); }
 
-        /* About Section */
-        .about-grid {
+        /* About */
+        .about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; align-items: start; }
+        .profile-img-container { width: 100%; aspect-ratio: 1; border-radius: 16px; overflow: hidden; background-color: var(--bg-card); border: 1px solid var(--border-color); }
+        .profile-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .about-text p { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .education-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); margin-top: 2rem; }
+        .education-card h4 { color: var(--text-primary); font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .education-card p { margin-bottom: 0; font-size: 0.95rem; color: var(--text-secondary); }
+
+        /* Experience */
+        .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+        .timeline-item { background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.8rem; border-radius: 12px; transition: border-color 0.2s, box-shadow 0.2s; }
+        .timeline-item:hover { border-color: var(--border-hover); box-shadow: 0 0 0 1px var(--border-hover); }
+        .timeline-item.highlighted { border-color: rgba(79,142,247,0.4); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(79,142,247,0.04) 100%); position: relative; }
+        .timeline-item.highlighted::before { content: '⭐ Featured'; position: absolute; top: -12px; right: 20px; background: var(--accent-primary); color: white; padding: 2px 12px; border-radius: 12px; font-size: 0.72rem; font-weight: 600; }
+        .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem; }
+        .timeline-title h3 { font-size: 1.15rem; font-weight: 600; }
+        .timeline-title h4 { font-size: 1rem; color: var(--accent-primary); font-weight: 500; }
+        .timeline-date { color: var(--text-secondary); font-size: 0.85rem; background: var(--bg-main); padding: 4px 12px; border-radius: 6px; border: 1px solid var(--border-color); font-family: var(--font-mono); }
+        .timeline-item ul { list-style-position: inside; color: var(--text-secondary); font-size: 0.95rem; }
+        .timeline-item li { margin-bottom: 0.4rem; }
+        .timeline-action { margin-top: 1rem; }
+
+        /* Projects */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+        .project-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.8rem; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
+        .project-card:hover { transform: translateY(-3px); border-color: var(--border-hover); }
+        .project-title { font-size: 1.35rem; margin-bottom: 0.8rem; font-weight: 600; }
+        .project-description { color: var(--text-secondary); margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.95rem; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+        .tech-tag { background: rgba(79,142,247,0.1); color: var(--accent-primary); padding: 3px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: 500; border: 1px solid rgba(79,142,247,0.2); font-family: var(--font-mono); }
+        .project-links { display: flex; gap: 0.8rem; }
+
+        /* Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+        .skill-category { background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.8rem; border-radius: 12px; }
+        .skill-category h3 { color: var(--text-primary); margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .skill-category h3::before { content: ''; display: inline-block; width: 10px; height: 10px; background: var(--accent-primary); border-radius: 2px; }
+        .skill-list { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.9; }
+
+        /* ============================
+           CODING STATS
+           ============================ */
+        #coding-stats { background: var(--bg-main); }
+
+        .stats-layout {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .profile-img-container {
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: 12px;
-            overflow: hidden;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-        }
-
-        .profile-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
-        .education-card {
-            background-color: var(--bg-main);
-            padding: 1.5rem;
-            border-radius: 8px;
+        /* Top-row card shared styles */
+        .stat-card {
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
-            margin-top: 2rem;
-        }
-
-        .education-card h4 {
-            color: var(--text-primary);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .education-card p {
-            margin-bottom: 0;
-            font-size: 1rem;
-        }
-
-        /* Experience Section */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .timeline-item {
-            background-color: var(--bg-main);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 8px;
-            transition: border-color 0.2s ease;
-        }
-
-        .timeline-item:hover {
-            border-color: var(--accent-primary);
-        }
-
-        /* Highlighted Timeline Item Styles */
-        .timeline-item.highlighted {
-            border-color: var(--accent-primary);
-            background-color: rgba(59, 130, 246, 0.05);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            transition: border-color 0.25s, box-shadow 0.25s;
             position: relative;
+            overflow: hidden;
         }
-
-        .timeline-item.highlighted::before {
-            content: '⭐ Featured';
+        .stat-card::after {
+            content: '';
             position: absolute;
-            top: -12px;
-            right: 20px;
-            background-color: var(--accent-primary);
-            color: white;
-            padding: 2px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            inset: 0;
+            border-radius: 16px;
+            background: radial-gradient(ellipse at top left, rgba(79,142,247,0.07) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .stat-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 0 0 1px rgba(79,142,247,0.2), 0 4px 24px rgba(79,142,247,0.08);
         }
 
-        .timeline-action {
-            margin-top: 1.2rem;
-        }
-
-        .timeline-header {
+        /* Card header row */
+        .card-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1.6rem;
         }
-
-        .timeline-title h3 {
-            font-size: 1.25rem;
-            color: var(--text-primary);
-        }
-
-        .timeline-title h4 {
-            font-size: 1.1rem;
-            color: var(--accent-primary);
-            font-weight: 500;
-        }
-
-        .timeline-date {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            background-color: var(--bg-card);
-            padding: 4px 12px;
-            border-radius: 4px;
-        }
-
-        .timeline-item ul {
-            list-style-position: inside;
-            color: var(--text-secondary);
-        }
-
-        .timeline-item li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-primary);
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            background-color: var(--bg-main);
-            color: var(--accent-primary);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid var(--border-color);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background-color: var(--bg-main);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 8px;
-        }
-
-        .skill-category h3 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
+        .card-platform-badge {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .skill-category h3::before {
-            content: '';
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: var(--accent-primary);
-            border-radius: 2px;
-        }
-
-        .skill-list {
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
             color: var(--text-secondary);
-            line-height: 1.8;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
-
-        /* Contact Section */
-        .contact-wrapper {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
+        .lc-logo-icon {
+            width: 20px; height: 20px; flex-shrink: 0;
         }
-
-        .contact-wrapper p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+        .gh-logo-icon {
+            width: 20px; height: 20px; flex-shrink: 0;
+            fill: var(--text-secondary);
         }
+        .card-external-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(79,142,247,0.25);
+            transition: background 0.2s;
+        }
+        .card-external-link:hover { background: var(--accent-glow); }
 
-        .contact-links {
+        /* ---- Donut + breakdown layout ---- */
+        .lc-body {
             display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        /* Donut */
+        .donut-wrap {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+        }
+        .donut-svg { width: 120px; height: 120px; transform: rotate(-90deg); }
+        .donut-track { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 10; }
+        .donut-seg { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dasharray 1.4s cubic-bezier(0.4,0,0.2,1); }
+        .donut-center {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+        }
+        .donut-total {
+            font-size: 1.65rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+        .donut-label {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--bg-main);
-            padding: 2rem 0;
-            text-align: center;
+        /* Breakdown bars */
+        .lc-breakdown { flex: 1; display: flex; flex-direction: column; gap: 0.9rem; }
+        .diff-row { display: flex; align-items: center; gap: 10px; }
+        .diff-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            width: 52px;
+            flex-shrink: 0;
+            font-family: var(--font-mono);
+        }
+        .diff-name.easy { color: var(--easy-color); }
+        .diff-name.medium { color: var(--medium-color); }
+        .diff-name.hard { color: var(--hard-color); }
+        .diff-track {
+            flex: 1;
+            height: 6px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .diff-fill {
+            height: 100%;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.4,0,0.2,1);
+        }
+        .diff-fill.easy { background: var(--easy-color); }
+        .diff-fill.medium { background: var(--medium-color); }
+        .diff-fill.hard { background: var(--hard-color); }
+        .diff-count {
+            font-size: 0.78rem;
             color: var(--text-secondary);
+            font-family: var(--font-mono);
+            width: 64px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        /* Rank / accent stat underneath breakdown */
+        .lc-footer-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.4rem;
+            padding-top: 1.2rem;
             border-top: 1px solid var(--border-color);
         }
+        .lc-mini-stat {
+            flex: 1;
+            background: rgba(79,142,247,0.06);
+            border-radius: 10px;
+            padding: 0.7rem 1rem;
+            border: 1px solid rgba(79,142,247,0.1);
+        }
+        .lc-mini-stat .msv {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+        .lc-mini-stat .msl {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-top: 1px;
+            letter-spacing: 0.04em;
+        }
+
+        /* Loading / Error states */
+        .lc-loading { text-align: center; padding: 3rem 0; color: var(--text-secondary); }
+        .spinner {
+            display: inline-block; width: 36px; height: 36px;
+            border: 2.5px solid rgba(79,142,247,0.15);
+            border-radius: 50%; border-top-color: var(--accent-primary);
+            animation: spin 0.9s linear infinite; margin-bottom: 0.8rem;
+        }
+
+        /* ---- Heatmap card (full-width) ---- */
+        .heatmap-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .heatmap-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            background: radial-gradient(ellipse at bottom right, rgba(79,142,247,0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .heatmap-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.4rem;
+        }
+        .heatmap-title {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .heatmap-legend {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+        .legend-box {
+            width: 11px; height: 11px; border-radius: 2px;
+        }
+
+        .heatmap-grid {
+            display: grid;
+            grid-template-rows: repeat(7, 1fr);
+            grid-auto-flow: column;
+            gap: 3px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+        .heatmap-grid::-webkit-scrollbar { height: 4px; }
+        .heatmap-grid::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+
+        .hm-sq {
+            width: 12px; height: 12px; border-radius: 2px;
+            cursor: pointer;
+            transition: transform 0.1s;
+            position: relative;
+        }
+        .hm-sq:hover { transform: scale(1.4); z-index: 2; }
+        .hm-sq.l0 { background: rgba(255,255,255,0.04); }
+        .hm-sq.l1 { background: rgba(79,142,247,0.25); }
+        .hm-sq.l2 { background: rgba(79,142,247,0.5); }
+        .hm-sq.l3 { background: rgba(79,142,247,0.75); }
+        .hm-sq.l4 { background: rgba(79,142,247,1); }
+
+        .heatmap-month-labels {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 5px;
+            overflow: hidden;
+        }
+        .month-label-slot {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        /* ---- Codolio card ---- */
+        .codolio-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .codolio-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            background: radial-gradient(ellipse at top right, rgba(79,142,247,0.07) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .codolio-body {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .platform-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            transition: border-color 0.2s, background 0.2s;
+            text-decoration: none;
+        }
+        .platform-row:hover {
+            border-color: var(--border-hover);
+            background: var(--accent-glow);
+        }
+        .platform-info { display: flex; align-items: center; gap: 10px; }
+        .platform-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+        }
+        .platform-name { font-size: 0.9rem; color: var(--text-primary); font-weight: 500; }
+        .platform-handle { font-size: 0.78rem; color: var(--text-secondary); font-family: var(--font-mono); }
+        .platform-arrow { color: var(--text-muted); font-size: 0.8rem; }
+
+        /* ---- Loading / Error shared ---- */
+        .lc-error { text-align: center; padding: 2rem 0; color: #f43f5e; font-size: 0.9rem; }
+
+        /* Contact */
+        .contact-wrapper { text-align: center; max-width: 580px; margin: 0 auto; }
+        .contact-wrapper p { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 2rem; }
+        .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; }
+
+        footer { background: var(--bg-main); padding: 2rem 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border-color); }
 
         /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
+        .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .stats-layout { grid-template-columns: 1fr; }
         }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-img-container {
-                max-width: 300px;
-                margin: 0 auto;
-            }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.4rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .profile-img-container { max-width: 260px; margin: 0 auto; }
+            .lc-body { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
+    <header>
         <nav class="container">
             <a href="#home" class="logo">Divyansh<span>.dev</span></a>
             <ul class="nav-links">
@@ -485,12 +466,13 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#coding-stats">Stats</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
@@ -504,41 +486,34 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about">
         <div class="container">
             <h2 class="section-title fade-in">About <span>Me</span></h2>
             <div class="about-grid fade-in">
                 <div class="profile-img-container">
-                    <img src="https://media.licdn.com/dms/image/v2/D5635AQEB0sZkjCodiA/profile-framedphoto-shrink_400_400/B56ZTZLMFDHsAc-/0/1738810376853?e=1775106000&v=beta&t=nRVoyjIqCT1ruNuL4AGd1ZTHb41o6YaidkHRvjpoCR0" alt="Divyansh Yadav"> 
+                    <img src="https://media.licdn.com/dms/image/v2/D5635AQEB0sZkjCodiA/profile-framedphoto-shrink_400_400/B56ZTZLMFDHsAc-/0/1738810376853?e=1775106000&v=beta&t=nRVoyjIqCT1ruNuL4AGd1ZTHb41o6YaidkHRvjpoCR0" alt="Divyansh Yadav">
                 </div>
                 <div class="about-text">
                     <p>I am a passionate Information Technology Engineering student currently pursuing my B.Tech at the Indian Institute of Information Technology, Una. I thrive on building robust backend architectures, integrating cutting-edge Generative AI features, and deploying seamless full-stack applications.</p>
                     <p>My technical journey includes working with startups and leading technical societies, pushing the boundaries of what I can build—from LLM-powered RAG pipelines to scalable medical e-commerce platforms.</p>
-                    
                     <div class="education-card">
                         <h4>B.Tech in Information Technology</h4>
-                        <p style="color: var(--text-secondary);">Indian Institute of Information Technology, Una &bull; 2023 - Present</p>
-                       
+                        <p>Indian Institute of Information Technology, Una &bull; 2023 – Present</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience & Leadership Section -->
+    <!-- Experience -->
     <section id="experience">
         <div class="container">
             <h2 class="section-title fade-in">Experience & <span>Leadership</span></h2>
             <div class="timeline fade-in">
-                
-                <!-- Experience 1 -->
                 <div class="timeline-item">
                     <div class="timeline-header">
-                        <div class="timeline-title">
-                            <h3>App Developer Intern</h3>
-                            <h4>ReduxCo Pvt Ltd</h4>
-                        </div>
+                        <div class="timeline-title"><h3>App Developer Intern</h3><h4>ReduxCo Pvt Ltd</h4></div>
                         <span class="timeline-date">Jan 2025 – Present</span>
                     </div>
                     <ul>
@@ -546,14 +521,9 @@
                         <li>Integrated RESTful APIs with dynamic state management, optimizing API call patterns for improved load performance.</li>
                     </ul>
                 </div>
-
-                <!-- Experience 2 -->
                 <div class="timeline-item">
                     <div class="timeline-header">
-                        <div class="timeline-title">
-                            <h3>Backend Development Intern</h3>
-                            <h4>Slotin Solution</h4>
-                        </div>
+                        <div class="timeline-title"><h3>Backend Development Intern</h3><h4>Slotin Solution</h4></div>
                         <span class="timeline-date">Jan 2025 – Present</span>
                     </div>
                     <ul>
@@ -561,163 +531,259 @@
                         <li>Shipped 5+ production endpoints with optimized database queries, integrated into real-time data pipelines.</li>
                     </ul>
                 </div>
-
-                <!-- Leadership 1 -->
                 <div class="timeline-item highlighted">
                     <div class="timeline-header">
-                        <div class="timeline-title">
-                            <h3>Chief Technology Officer (CTO)</h3>
-                            <h4>Startup RPAR</h4>
-                        </div>
+                        <div class="timeline-title"><h3>Chief Technology Officer (CTO)</h3><h4>Startup RPAR</h4></div>
                         <span class="timeline-date">2025 – Present</span>
                     </div>
-                    <ul>
-                        <li>Leading the technical strategy and architecture development for the startup's core product offerings.</li>
-                    </ul>
+                    <ul><li>Leading the technical strategy and architecture development for the startup's core product offerings.</li></ul>
                     <div class="timeline-action">
-                        <a href="https://www.linkedin.com/company/109599035/" target="_blank" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px;">
-                            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            Startup LinkedIn
-                        </a>
+                        <a href="https://www.linkedin.com/company/109599035/" target="_blank" class="btn btn-secondary" style="padding:6px 14px;font-size:0.82rem;">LinkedIn →</a>
                     </div>
                 </div>
-
-                <!-- Leadership 2 -->
                 <div class="timeline-item">
                     <div class="timeline-header">
-                        <div class="timeline-title">
-                            <h3>Technical Head</h3>
-                            <h4>Aavesh Technical Society, IIIT Una</h4>
-                        </div>
+                        <div class="timeline-title"><h3>Technical Head</h3><h4>Aavesh Technical Society, IIIT Una</h4></div>
                         <span class="timeline-date">Dec 2024 – Dec 2025</span>
                     </div>
-                    <ul>
-                        <li>Guiding the technical direction of the society and organizing technical workshops and initiatives for the university.</li>
-                    </ul>
+                    <ul><li>Guiding technical direction, organising workshops and initiatives for the university community.</li></ul>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects -->
     <section id="projects">
         <div class="container">
             <h2 class="section-title fade-in">Featured <span>Projects</span></h2>
             <div class="projects-grid fade-in">
-                
-                <!-- Project 1 -->
                 <div class="project-card">
                     <h3 class="project-title">MedAI</h3>
-                    <p class="project-description">An AI-powered medical report analysis and health assistant. Ingests PDFs/images via OCR and uses LLM-powered RAG pipelines to generate personalized health insights, diets, and remedies.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">LLMs & RAG</span>
-                        <span class="tech-tag">OCR</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://medai-5o4l.vercel.app/" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">Live Demo</a>
-                    </div>
+                    <p class="project-description">AI-powered medical report analysis. Ingests PDFs/images via OCR and uses LLM-powered RAG pipelines to generate personalized health insights, diets, and remedies.</p>
+                    <div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">React</span><span class="tech-tag">LLMs & RAG</span><span class="tech-tag">OCR</span></div>
+                    <div class="project-links"><a href="https://medai-5o4l.vercel.app/" target="_blank" class="btn btn-secondary" style="padding:7px 16px;font-size:0.85rem;">Live Demo</a></div>
                 </div>
-
-                <!-- Project 2 -->
                 <div class="project-card">
                     <h3 class="project-title">ai-logmaster</h3>
-                    <p class="project-description">A production-grade agentic AI CLI tool on PyPI that uses LangGraph multi-step reasoning to autonomously diagnose software errors from logs, saving LLM API tokens via intelligent caching.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">LangGraph</span>
-                        <span class="tech-tag">LLMs</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://pypi.org/project/ai-logmaster/" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">View on PyPI</a>
-                    </div>
+                    <p class="project-description">Production-grade agentic CLI tool on PyPI. Uses LangGraph multi-step reasoning to autonomously diagnose software errors from logs, with intelligent API token caching.</p>
+                    <div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">LangChain</span><span class="tech-tag">LangGraph</span><span class="tech-tag">LLMs</span></div>
+                    <div class="project-links"><a href="https://pypi.org/project/ai-logmaster/" target="_blank" class="btn btn-secondary" style="padding:7px 16px;font-size:0.85rem;">View on PyPI</a></div>
                 </div>
-
-                <!-- Project 3 -->
                 <div class="project-card">
                     <h3 class="project-title">Wave Music App</h3>
-                    <p class="project-description">A robust music application featuring real-time music sync with friends via WebSockets, built with a Flutter frontend and a Django Rest Framework backend.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">Django (DRF)</span>
-                        <span class="tech-tag">WebSockets</span>
-                        <span class="tech-tag">Docker</span>
-                    </div>
+                    <p class="project-description">Music app with real-time sync with friends via WebSockets. Flutter frontend, Django Rest Framework backend, containerized with Docker.</p>
+                    <div class="tech-tags"><span class="tech-tag">Flutter</span><span class="tech-tag">Django DRF</span><span class="tech-tag">WebSockets</span><span class="tech-tag">Docker</span></div>
                     <div class="project-links">
-                        <a href="https://github.com/Divodude/Wave.git" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">GitHub</a>
-                        <a href="https://wave-web-divodudes-projects.vercel.app/" target="_blank" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">Live Demo</a>
+                        <a href="https://github.com/Divodude/Wave.git" target="_blank" class="btn btn-secondary" style="padding:7px 16px;font-size:0.85rem;">GitHub</a>
+                        <a href="https://wave-web-divodudes-projects.vercel.app/" target="_blank" class="btn btn-primary" style="padding:7px 16px;font-size:0.85rem;">Live Demo</a>
                     </div>
                 </div>
-
-                <!-- Project 4 -->
                 <div class="project-card">
                     <h3 class="project-title">Microfw</h3>
-                    <p class="project-description">A lightweight, high-performance asynchronous Python micro-framework for building modern microservices. Features an async-first ASGI architecture, native SQLAlchemy ORM support, and automatic Pydantic data validation.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">ASGI</span>
-                        <span class="tech-tag">SQLAlchemy</span>
-                        <span class="tech-tag">Pydantic</span>
-                        <span class="tech-tag">Microservices</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://pypi.org/project/microfw/" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">View on PyPI</a>
-                    </div>
+                    <p class="project-description">Lightweight async Python micro-framework for modern microservices. Async-first ASGI architecture, native SQLAlchemy ORM, and automatic Pydantic validation.</p>
+                    <div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">ASGI</span><span class="tech-tag">SQLAlchemy</span><span class="tech-tag">Pydantic</span></div>
+                    <div class="project-links"><a href="https://pypi.org/project/microfw/" target="_blank" class="btn btn-secondary" style="padding:7px 16px;font-size:0.85rem;">View on PyPI</a></div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills -->
     <section id="skills">
         <div class="container">
             <h2 class="section-title fade-in">Technical <span>Skills</span></h2>
             <div class="skills-grid fade-in">
-                
-                <div class="skill-category">
-                    <h3>AI & Generative AI</h3>
-                    <div class="skill-list">
-                        Large Language Models (LLMs), Prompt Engineering, RAG, Agentic AI, LangChain, LangGraph, Ollama, OpenAI API, Embeddings, Vector Search
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Programming</h3>
-                    <div class="skill-list">
-                        Python, C/C++, SQL, JavaScript, Dart, HTML, CSS
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Frameworks & Libraries</h3>
-                    <div class="skill-list">
-                        Django, Flask, FastAPI, Flutter, LangChain, LangGraph, OpenCV, React, REST APIs
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Cloud & DevOps</h3>
-                    <div class="skill-list">
-                        Google Cloud Platform (GCP), Firebase, AWS S3, Docker, Git, Continuous Deployment, Redis, Linux
-                    </div>
-                </div>
-
+                <div class="skill-category"><h3>AI & Generative AI</h3><div class="skill-list">Large Language Models (LLMs), Prompt Engineering, RAG, Agentic AI, LangChain, LangGraph, Ollama, OpenAI API, Embeddings, Vector Search</div></div>
+                <div class="skill-category"><h3>Programming</h3><div class="skill-list">Python, C/C++, SQL, JavaScript, Dart, HTML, CSS</div></div>
+                <div class="skill-category"><h3>Frameworks & Libraries</h3><div class="skill-list">Django, Flask, FastAPI, Flutter, LangChain, LangGraph, OpenCV, React, REST APIs</div></div>
+                <div class="skill-category"><h3>Cloud & DevOps</h3><div class="skill-list">Google Cloud Platform (GCP), Firebase, AWS S3, Docker, Git, Continuous Deployment, Redis, Linux</div></div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ============================
+         CODING STATS — REDESIGNED
+         ============================ -->
+    <section id="coding-stats">
+        <div class="container">
+            <h2 class="section-title fade-in">Problem <span>Solving</span></h2>
+
+            <!-- Two-column top row: LeetCode card + Profiles card -->
+            <div class="stats-layout fade-in">
+
+                <!-- LeetCode Card -->
+                <div class="stat-card" id="lc-card">
+                    <!-- Loading -->
+                    <div id="lc-loading" class="lc-loading">
+                        <div class="spinner"></div>
+                        <p style="font-size:0.85rem;">Fetching LeetCode stats…</p>
+                    </div>
+                    <!-- Content -->
+                    <div id="lc-content" style="display:none;">
+                        <div class="card-header">
+                            <div class="card-platform-badge">
+                                <svg class="lc-logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffa116">
+                                    <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.636c-1.11-1.11-2.621-1.636-4.226-1.636s-3.116.526-4.226 1.636L2.623 12.16c-1.11 1.11-1.636 2.621-1.636 4.226s.526 3.116 1.636 4.226l4.332 4.363c1.11 1.11 2.621 1.636 4.226 1.636s3.116-.526 4.226-1.636l2.609-2.636c.514-.515.496-1.366-.039-1.901-.535-.536-1.386-.554-1.9-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z"/>
+                                </svg>
+                                LeetCode
+                            </div>
+                            <a href="https://leetcode.com/u/divyansh0932/" target="_blank" class="card-external-link">@divyansh0932 ↗</a>
+                        </div>
+
+                        <div class="lc-body">
+                            <!-- Donut -->
+                            <div class="donut-wrap">
+                                <svg class="donut-svg" viewBox="0 0 36 36" id="donut-svg">
+                                    <circle class="donut-track" cx="18" cy="18" r="13"/>
+                                    <!-- Hard (bottom layer, full circle placeholder) -->
+                                    <circle class="donut-seg" id="donut-hard"  cx="18" cy="18" r="13" stroke="var(--hard-color)"   stroke-dasharray="0 100" stroke-dashoffset="0"/>
+                                    <!-- Medium -->
+                                    <circle class="donut-seg" id="donut-medium" cx="18" cy="18" r="13" stroke="var(--medium-color)" stroke-dasharray="0 100" stroke-dashoffset="0"/>
+                                    <!-- Easy (top layer) -->
+                                    <circle class="donut-seg" id="donut-easy"  cx="18" cy="18" r="13" stroke="var(--easy-color)"   stroke-dasharray="0 100" stroke-dashoffset="0"/>
+                                </svg>
+                                <div class="donut-center">
+                                    <span class="donut-total" id="lc-total">–</span>
+                                    <span class="donut-label">solved</span>
+                                </div>
+                            </div>
+
+                            <!-- Bars -->
+                            <div class="lc-breakdown">
+                                <div class="diff-row">
+                                    <span class="diff-name easy">Easy</span>
+                                    <div class="diff-track"><div class="diff-fill easy" id="bar-easy"></div></div>
+                                    <span class="diff-count" id="cnt-easy">–</span>
+                                </div>
+                                <div class="diff-row">
+                                    <span class="diff-name medium">Med</span>
+                                    <div class="diff-track"><div class="diff-fill medium" id="bar-medium"></div></div>
+                                    <span class="diff-count" id="cnt-medium">–</span>
+                                </div>
+                                <div class="diff-row">
+                                    <span class="diff-name hard">Hard</span>
+                                    <div class="diff-track"><div class="diff-fill hard" id="bar-hard"></div></div>
+                                    <span class="diff-count" id="cnt-hard">–</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mini stats footer -->
+                        <div class="lc-footer-stats">
+                            <div class="lc-mini-stat">
+                                <div class="msv" id="lc-rank">–</div>
+                                <div class="msl">Global Rank</div>
+                            </div>
+                            <div class="lc-mini-stat">
+                                <div class="msv" id="lc-acceptance">–</div>
+                                <div class="msl">Acceptance Rate</div>
+                            </div>
+                            <div class="lc-mini-stat">
+                                <div class="msv" id="lc-streak">–</div>
+                                <div class="msl">Active Streak</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Error -->
+                    <div id="lc-error" class="lc-error" style="display:none;">
+                        <p>Could not load LeetCode data.</p>
+                        <a href="https://leetcode.com/u/divyansh0932/" target="_blank" class="btn btn-secondary" style="margin-top:0.8rem;padding:6px 16px;font-size:0.85rem;">View Profile Manually</a>
+                    </div>
+                </div>
+
+                <!-- Profiles / Links Card -->
+                <div class="codolio-card">
+                    <div class="card-header">
+                        <div class="card-platform-badge" style="gap:6px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;">
+                                <circle cx="12" cy="12" r="10" stroke="var(--accent-primary)" stroke-width="1.5"/>
+                                <path d="M12 6v6l4 2" stroke="var(--accent-primary)" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            Coding Profiles
+                        </div>
+                        <span style="font-size:0.75rem;color:var(--text-muted);">All platforms</span>
+                    </div>
+                    <div class="codolio-body">
+                        <a href="https://leetcode.com/u/divyansh0932/" target="_blank" class="platform-row">
+                            <div class="platform-info">
+                                <div class="platform-dot" style="background:#ffa116;"></div>
+                                <div>
+                                    <div class="platform-name">LeetCode</div>
+                                    <div class="platform-handle">@divyansh0932</div>
+                                </div>
+                            </div>
+                            <span class="platform-arrow">↗</span>
+                        </a>
+                        <a href="https://codolio.com/profile/Divodude" target="_blank" class="platform-row">
+                            <div class="platform-info">
+                                <div class="platform-dot" style="background:var(--accent-primary);"></div>
+                                <div>
+                                    <div class="platform-name">Codolio</div>
+                                    <div class="platform-handle">@Divodude</div>
+                                </div>
+                            </div>
+                            <span class="platform-arrow">↗</span>
+                        </a>
+                        <a href="https://github.com/Divodude" target="_blank" class="platform-row">
+                            <div class="platform-info">
+                                <div class="platform-dot" style="background:#e8edf5;"></div>
+                                <div>
+                                    <div class="platform-name">GitHub</div>
+                                    <div class="platform-handle">@Divodude</div>
+                                </div>
+                            </div>
+                            <span class="platform-arrow">↗</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/divyansh-yadav-15618626b/" target="_blank" class="platform-row">
+                            <div class="platform-info">
+                                <div class="platform-dot" style="background:#0a66c2;"></div>
+                                <div>
+                                    <div class="platform-name">LinkedIn</div>
+                                    <div class="platform-handle">Divyansh Yadav</div>
+                                </div>
+                            </div>
+                            <span class="platform-arrow">↗</span>
+                        </a>
+                        <a href="https://pypi.org/user/Divodude/" target="_blank" class="platform-row">
+                            <div class="platform-info">
+                                <div class="platform-dot" style="background:#3775a9;"></div>
+                                <div>
+                                    <div class="platform-name">PyPI</div>
+                                    <div class="platform-handle">Divodude</div>
+                                </div>
+                            </div>
+                            <span class="platform-arrow">↗</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Heatmap — full width -->
+            <div class="heatmap-card fade-in" id="heatmap-outer" style="display:none;">
+                <div class="heatmap-header">
+                    <span class="heatmap-title">Submission Activity — Last 13 Weeks</span>
+                    <div class="heatmap-legend">
+                        <span>Less</span>
+                        <div class="legend-box" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);"></div>
+                        <div class="legend-box" style="background:rgba(79,142,247,0.25);"></div>
+                        <div class="legend-box" style="background:rgba(79,142,247,0.5);"></div>
+                        <div class="legend-box" style="background:rgba(79,142,247,0.75);"></div>
+                        <div class="legend-box" style="background:rgba(79,142,247,1);"></div>
+                        <span>More</span>
+                    </div>
+                </div>
+                <div id="heatmap-grid" class="heatmap-grid"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact -->
     <section id="contact">
         <div class="container">
-            <h2 class="section-title fade-in" style="text-align: center;">Get In <span>Touch</span></h2>
+            <h2 class="section-title fade-in" style="text-align:center;">Get In <span>Touch</span></h2>
             <div class="contact-wrapper fade-in">
                 <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Let's connect.</p>
-                
                 <div class="contact-links">
                     <a href="mailto:ry604492@gmail.com" class="btn btn-primary">Email Me</a>
                     <a href="https://www.linkedin.com/in/divyansh-yadav-15618626b/" target="_blank" class="btn btn-secondary">LinkedIn</a>
@@ -728,66 +794,190 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Divyansh Yadav. Built with clean code and solid colors.</p>
+            <p>&copy; 2025 Divyansh Yadav. Built with precision and purpose.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#home') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        const headerOffset = 70;
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                        
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
+                const id = a.getAttribute('href');
+                if (id === '#home') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+                const el = document.querySelector(id);
+                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 70, behavior: 'smooth' });
+            });
+        });
+
+        // Fade-in on scroll
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+        // ---- LeetCode Stats ----
+        async function loadLeetCode() {
+            const username = 'divyansh0932';
+            const loadEl  = document.getElementById('lc-loading');
+            const contEl  = document.getElementById('lc-content');
+            const errEl   = document.getElementById('lc-error');
+
+            try {
+                let data = null;
+                // Using a fast Vercel hosted API wrapper as primary, with the original Heroku API as a fallback
+                const endpoints = [
+                    `https://leetcode-api-faisalshohag.vercel.app/${username}`,
+                    `https://leetcode-stats-api.herokuapp.com/${username}`
+                ];
+
+                for (const url of endpoints) {
+                    try {
+                        const res = await fetch(url);
+                        if (res.ok) {
+                            const json = await res.json();
+                            if (json.totalSolved !== undefined || json.status === 'success') {
+                                data = json;
+                                break; // Break out of loop once we get successful data
+                            }
+                        }
+                    } catch (e) {
+                        console.warn(`Failed fetching from ${url}. Trying next...`, e);
                     }
                 }
-            });
-        });
 
-        // Header scroll effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+                if (!data) throw new Error('All API endpoints failed');
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+                // Totals
+                document.getElementById('lc-total').textContent = data.totalSolved || 0;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // Optional: Stop observing once faded in
-                    // observer.unobserve(entry.target); 
+                // Rank
+                document.getElementById('lc-rank').textContent = data.ranking
+                    ? data.ranking.toLocaleString()
+                    : 'N/A';
+
+                // Acceptance
+                let acceptance = '—';
+                if (data.acceptanceRate) {
+                    acceptance = parseFloat(data.acceptanceRate).toFixed(1) + '%';
+                } else if (data.totalSubmissions && data.totalSolved) {
+                    acceptance = (data.totalSolved / data.totalSubmissions * 100).toFixed(1) + '%';
                 }
-            });
-        }, observerOptions);
+                document.getElementById('lc-acceptance').textContent = acceptance;
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+                // Streak
+                const streak = data.submissionCalendar
+                    ? computeStreak(typeof data.submissionCalendar === 'string'
+                        ? JSON.parse(data.submissionCalendar)
+                        : data.submissionCalendar)
+                    : '—';
+                document.getElementById('lc-streak').textContent = typeof streak === 'number' ? streak + 'd' : streak;
+
+                // Donut (SVG circumference for r=13 → 2π×13 ≈ 81.68)
+                const circ = 2 * Math.PI * 13;
+                const total = data.totalSolved || 1;
+                const easyPct   = (data.easySolved || 0)   / total;
+                const medPct    = (data.mediumSolved || 0) / total;
+                const hardPct   = (data.hardSolved || 0)   / total;
+
+                setTimeout(() => {
+                    // Hard runs full background, medium on top, easy on top of medium
+                    const hardArc   = circ * hardPct;
+                    const medArc    = circ * medPct;
+                    const easyArc   = circ * easyPct;
+
+                    document.getElementById('donut-easy').setAttribute('stroke-dasharray', `${easyArc} ${circ - easyArc}`);
+                    document.getElementById('donut-easy').setAttribute('stroke-dashoffset', 0);
+                    document.getElementById('donut-medium').setAttribute('stroke-dasharray', `${medArc} ${circ - medArc}`);
+                    document.getElementById('donut-medium').setAttribute('stroke-dashoffset', -easyArc);
+                    document.getElementById('donut-hard').setAttribute('stroke-dasharray', `${hardArc} ${circ - hardArc}`);
+                    document.getElementById('donut-hard').setAttribute('stroke-dashoffset', -(easyArc + medArc));
+                }, 120);
+
+                // Bars
+                setTimeout(() => {
+                    document.getElementById('bar-easy').style.width   = data.totalEasy ? `${(data.easySolved   / data.totalEasy)   * 100}%` : '0%';
+                    document.getElementById('bar-medium').style.width = data.totalMedium ? `${(data.mediumSolved  / data.totalMedium) * 100}%` : '0%';
+                    document.getElementById('bar-hard').style.width   = data.totalHard ? `${(data.hardSolved    / data.totalHard)   * 100}%` : '0%';
+                }, 120);
+
+                document.getElementById('cnt-easy').textContent   = `${data.easySolved || 0}/${data.totalEasy || 0}`;
+                document.getElementById('cnt-medium').textContent = `${data.mediumSolved || 0}/${data.totalMedium || 0}`;
+                document.getElementById('cnt-hard').textContent   = `${data.hardSolved || 0}/${data.totalHard || 0}`;
+
+                // Show
+                loadEl.style.display = 'none';
+                contEl.style.display = 'block';
+
+                // Heatmap
+                if (data.submissionCalendar) {
+                    buildHeatmap(typeof data.submissionCalendar === 'string'
+                        ? JSON.parse(data.submissionCalendar)
+                        : data.submissionCalendar);
+                }
+
+            } catch (err) {
+                console.error("LeetCode Fetch Error:", err);
+                loadEl.style.display = 'none';
+                errEl.style.display  = 'block';
+            }
+        }
+
+        function computeStreak(cal) {
+            if (!cal) return 0;
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            let streak = 0;
+            for (let i = 0; i < 365; i++) {
+                const d = new Date(today.getTime() - i * 86400000);
+                const ts = Math.floor(d.getTime() / 1000);
+                // check timestamps within ±12h
+                const found = Object.entries(cal).some(([t]) => Math.abs(parseInt(t) - ts) < 43200);
+                if (found) {
+                    streak++;
+                } else if (i > 0) {
+                    break;
+                }
+            }
+            return streak;
+        }
+
+        function buildHeatmap(cal) {
+            if (!cal) return;
+            const actMap = {};
+            for (const [ts, cnt] of Object.entries(cal)) {
+                const d = new Date(parseInt(ts) * 1000);
+                actMap[d.toDateString()] = cnt;
+            }
+
+            const grid  = document.getElementById('heatmap-grid');
+            grid.innerHTML = '';
+
+            const today     = new Date();
+            const daysTrack = 91;
+            const startDate = new Date(today.getTime() - (daysTrack - 1) * 86400000);
+
+            for (let i = 0; i < daysTrack; i++) {
+                const cur   = new Date(startDate.getTime() + i * 86400000);
+                const count = actMap[cur.toDateString()] || 0;
+                const sq    = document.createElement('div');
+                sq.className = 'hm-sq';
+                const opts = { month: 'short', day: 'numeric', year: 'numeric' };
+                sq.title = `${count} submissions · ${cur.toLocaleDateString(undefined, opts)}`;
+                if      (count === 0) sq.classList.add('l0');
+                else if (count <= 1)  sq.classList.add('l1');
+                else if (count <= 3)  sq.classList.add('l2');
+                else if (count <= 5)  sq.classList.add('l3');
+                else                  sq.classList.add('l4');
+                grid.appendChild(sq);
+            }
+
+            document.getElementById('heatmap-outer').style.display = 'block';
+        }
+
+        loadLeetCode();
     </script>
 </body>
 </html>
